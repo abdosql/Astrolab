@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Loader from './Loader';
 import Image from 'next/image';
 
-const login: React.FC = () => {
+const Login: React.FC = () => {
   const router = useRouter();
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [serverErrorMessage, setServerErrorMessage] = useState<string | null>(null);
@@ -113,7 +113,7 @@ const login: React.FC = () => {
           setServerErrorMessage('Une erreur inconnue s\'est produite lors de la connexion.');
         }
       }
-    } catch (error) {
+    } catch {
       setServerErrorMessage('Erreur serveur. Veuillez réessayer plus tard.');
     } finally {
       setLoading(false);
@@ -188,4 +188,4 @@ const login: React.FC = () => {
   );
 };
 
-export default login;
+export default Login;

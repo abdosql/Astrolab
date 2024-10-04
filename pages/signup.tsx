@@ -88,11 +88,9 @@ const SignUp: React.FC = () => {
       const { token } = response.data;
       localStorage.setItem('token', token);
       router.push('/login', { query: { successMessage: 'Registration successful! You can now log in.' } });
-    } catch (err: any) {
-      if (err.response && err.response.data && err.response.data.msg) {
-        setServerError(err.response.data.msg);
-      } else {
-        setServerError('An error occurred. Please try again later.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        // Handle the error
       }
     } finally {
       setIsLoading(false);

@@ -1,8 +1,14 @@
 import Image from 'next/image';
 
-export default function LargeLogo({ imageName, backgroundImage, showText = true }) {
+interface LargeLogoProps {
+  imageName?: string;
+  backgroundImage?: string;
+  showText?: boolean;
+}
+
+export default function LargeLogo({ imageName, backgroundImage, showText = true }: LargeLogoProps) {
   console.log('LargeLogo rendering:', { imageName, backgroundImage, showText });
-  const circleStyle = {
+  const circleStyle: React.CSSProperties = {
     backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',

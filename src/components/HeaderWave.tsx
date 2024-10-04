@@ -1,7 +1,13 @@
 import React from 'react';
 import LargeLogo from './LargeLogo';
 
-export default function HeaderWave({ logoImageName, backgroundImage, showText }) {
+interface HeaderWaveProps {
+  logoImageName?: string;
+  backgroundImage?: string;
+  showText?: boolean;
+}
+
+export default function HeaderWave({ logoImageName, backgroundImage, showText }: HeaderWaveProps) {
   console.log('HeaderWave rendering:', { logoImageName, backgroundImage, showText });
   return (
     <div>

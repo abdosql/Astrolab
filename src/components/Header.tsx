@@ -1,11 +1,16 @@
-'use client';  // Add this 
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import HeaderWave from './HeaderWave'; // Import correct de HeaderWave
-
+import HeaderWave from './HeaderWave';
 import { useState, useEffect } from 'react';
 
-export default function Header({ logoImageName = "astrolab white png.png", backgroundImage, showText }) {
+interface HeaderProps {
+  logoImageName?: string;
+  backgroundImage?: string;
+  showText?: boolean;
+}
+
+export default function Header({ logoImageName = "astrolab white png.png", backgroundImage, showText }: HeaderProps) {
   console.log('Header rendering:', { logoImageName, backgroundImage, showText });
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

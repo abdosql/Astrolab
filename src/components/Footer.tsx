@@ -1,16 +1,22 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 export default function Footer() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
 
-  const handleInputChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -18,12 +24,10 @@ export default function Footer() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here (e.g., send data to an API)
     console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({ name: '', email: '', message: '' });
+    // Add your form submission logic here
   };
 
   return (
@@ -37,7 +41,7 @@ export default function Footer() {
               name="name"
               placeholder="Your Name"
               value={formData.name}
-              onChange={handleInputChange}
+              onChange={handleChange}
               required
             />
             <input
@@ -45,29 +49,29 @@ export default function Footer() {
               name="email"
               placeholder="Your Email"
               value={formData.email}
-              onChange={handleInputChange}
+              onChange={handleChange}
               required
             />
             <textarea
               name="message"
               placeholder="Your Message"
               value={formData.message}
-              onChange={handleInputChange}
+              onChange={handleChange}
               required
             ></textarea>
-            <button className="venture-btn">Contact Us</button>
+            <button type="submit">Send</button>
           </form>
         </div>
       </div>
       <div className="social-media">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <Image src="/images/facebook.svg" alt="Facebook" width={32} height={32} />
+        </a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
           <Image src="/images/twitter.svg" alt="Twitter" width={32} height={32} />
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <Image src="/images/insta.svg" alt="Instagram" width={32} height={32} />
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          <Image src="/images/linkedin.svg" alt="LinkedIn" width={32} height={32} />
+          <Image src="/images/instagram.svg" alt="Instagram" width={32} height={32} />
         </a>
         <a href="https://github.com" target="_blank" rel="noopener noreferrer">
           <Image src="/images/github.svg" alt="GitHub" width={32} height={32} />

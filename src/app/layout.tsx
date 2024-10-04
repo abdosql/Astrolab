@@ -1,11 +1,16 @@
 import './globals.css'
+import { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Astrolab - Real-time Observatory',
   description: 'Your real-time observatory for tracking and exploring asteroids, comets, and Near-Earth Objects (NEOs)',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <head>

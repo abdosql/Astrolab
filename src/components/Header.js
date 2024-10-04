@@ -44,7 +44,6 @@ export default function Header({ logoImageName = "astrolab white png.png" }) {
           <i className="fas fa-book-open"></i>
         </div>
       </nav>
-      </nav>
       <HeaderWave logoImageName={logoImageName} /> 
     </header>
   );

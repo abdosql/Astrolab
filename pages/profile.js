@@ -6,7 +6,9 @@ export default function ProfilePage() {
   return (
     <>
       <Header logoImageName="/profile/profile circle.svg" /> {/* Passez le nom du logo si nécessaire */}
+      <main>
       <Profile />
+      </main>
     </>
   );
 }

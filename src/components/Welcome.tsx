@@ -18,8 +18,8 @@ export default function Welcome() {
           </div>
         </div>
         <div className="welcome-text">
-          <p>Welcome to Astrolab, your real-time observatory for tracking and exploring asteroids, comets, and Near-Earth Objects (NEOs). Whether you're an astronomer, space enthusiast, or simply curious about the universe, Astrolab offers a seamless way to stay connected with the dynamic movements of celestial bodies.
-          With live data at your fingertips, you can track objects in real time, view their trajectories, and uncover insights into the ever-changing landscape of our solar system. Explore the mysteries of space, stay informed on potential close approaches, and join a community passionate about discovering the wonders beyond our world.</p>
+          <p>Welcome to Astrolab, your real-time observatory for tracking and exploring asteroids, comets, and Near-Earth Objects (NEOs). Whether you&apos;re an astronomer, space enthusiast, or simply curious about the universe, Astrolab offers a seamless way to stay connected with the dynamic movements of celestial bodies.
+With live data at your fingertips, you can track objects in real time, view their trajectories, and uncover insights into the ever-changing landscape of our solar system. Explore the mysteries of space, stay informed on potential close approaches, and join a community passionate about discovering the wonders beyond our world.</p>
         </div>
       </div>
     </section>

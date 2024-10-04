@@ -5,7 +5,7 @@ import '../src/app/globals.css';
 export default function ProfilePage() {
   return (
     <>
-      <Header logoImageName="/profile/profile circle.svg" /> {/* Passez le nom du logo si nécessaire */}
+      <Header backgroundImage="/images/profile/profile circle.svg" logoImageName='profile.jpeg' showText={false} /> {/* Passez le nom du logo si nécessaire */}
       <main>
       <Profile />
       </main>

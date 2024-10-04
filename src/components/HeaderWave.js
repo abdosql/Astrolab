@@ -1,10 +1,15 @@
 import React from 'react';
 import LargeLogo from './LargeLogo';
 
-export default function HeaderWave({ logoImageName }) {
+export default function HeaderWave({ logoImageName, backgroundImage, showText }) {
+  console.log('HeaderWave rendering:', { logoImageName, backgroundImage, showText });
   return (
     <div>
-      <LargeLogo imageName={logoImageName} />
+      <LargeLogo 
+        backgroundImage={backgroundImage} 
+        imageName={logoImageName} 
+        showText={showText}
+      />
       <div className="header-wave">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1877 490">
           <defs>

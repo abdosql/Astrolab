@@ -5,7 +5,8 @@ import HeaderWave from './HeaderWave'; // Import correct de HeaderWave
 
 import { useState, useEffect } from 'react';
 
-export default function Header({ logoImageName = "astrolab white png.png" }) {
+export default function Header({ logoImageName = "astrolab white png.png", backgroundImage, showText }) {
+  console.log('Header rendering:', { logoImageName, backgroundImage, showText });
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -44,7 +45,7 @@ export default function Header({ logoImageName = "astrolab white png.png" }) {
           <i className="fas fa-book-open"></i>
         </div>
       </nav>
-      <HeaderWave logoImageName={logoImageName} /> 
+      <HeaderWave logoImageName={logoImageName} backgroundImage={backgroundImage} showText={showText} /> 
     </header>
   );
 }

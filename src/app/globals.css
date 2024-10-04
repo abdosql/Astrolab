@@ -180,7 +180,7 @@ nav {
 
 .logo-large {
   position: absolute;
-  top: 58%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -189,15 +189,44 @@ nav {
   max-width: 600px;
 }
 
-.logo-large img {
+.logo-circle {
+  width: 336px;
+  height: 336px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  width: 90%;
+  height: 90%;
+  padding: 5%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circular-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.logo-circle img {
   width: 100%;
   max-width: 336px;
   margin-bottom: 1rem;
+  object-fit: contain;
 }
 
 .logo-large h1 {
   font-size: 3rem;
-  margin: 0;
+  margin: 0rem 0 0;
   color: #000;
 }
 
@@ -563,42 +592,33 @@ main {
       padding: 1rem 2.5rem;
   }
 
-  .logo-large {
-    top: 50%; /* Adjust the vertical position for mobile */
-  }
-
-  .logo-large img {
-    max-width: 240px; /* Reduce the maximum width for mobile */
+  .logo-circle {
+    width: 240px;
+    height: 240px;
   }
 
   .logo-large h1 {
-    font-size: 2rem; /* Reduce the font size for mobile */
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
-  .logo-large img {
-    max-width: 200px; /* Further reduce the maximum width for smaller devices */
+  .logo-circle {
+    width: 200px;
+    height: 200px;
   }
 
   .logo-large h1 {
-    font-size: 1.5rem; /* Further reduce the font size for smaller devices */
-  }
-}
-
-@media (max-width: 1024px) {
-  .logo-large img {
-    max-width: 280px;
-  }
-  .logo-large h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 360px) {
-  .logo-large img {
-    max-width: 160px;
+  .logo-circle {
+    width: 160px;
+    height: 160px;
   }
+
   .logo-large h1 {
     font-size: 1.2rem;
   }

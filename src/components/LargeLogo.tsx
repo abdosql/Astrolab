@@ -22,7 +22,7 @@ export default function LargeLogo({ imageName, backgroundImage, showText = true 
         {imageName && (
           <div className="image-container">
             <Image 
-              src={`/images/profile/users/${imageName}`} 
+              src={`/images/${imageName}`} 
               alt="Astrolab" 
               width={336} 
               height={336} 

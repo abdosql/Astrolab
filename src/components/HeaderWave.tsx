@@ -17,7 +17,7 @@ export default function HeaderWave({ logoImageName, backgroundImage, showText }:
         showText={showText}
       />
       <div className="header-wave">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1877 490">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1895 490">
           <defs>
             <style>{`.cls-1{fill:#fff;}`}</style>
           </defs>

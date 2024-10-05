@@ -19,17 +19,6 @@ const Login: React.FC = () => {
   const [passwordError, setPasswordError] = useState<string | null>(null);
 
   useEffect(() => {
-    const { successMessage } = router.query;
-    if (successMessage) {
-      setSuccessMessage(successMessage as string);
-      const timer = setTimeout(() => {
-        setSuccessMessage(null);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [router.query]);
-
-  useEffect(() => {
     const savedEmail = localStorage.getItem('rememberedEmail');
     const savedPassword = localStorage.getItem('rememberedPassword');
     const savedRememberMe = localStorage.getItem('rememberMe') === 'true';
@@ -90,6 +79,7 @@ const Login: React.FC = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
+        document.cookie = `token=${data.token}; path=/; max-age=86400`; // Set cookie for 24 hours
         
         if (rememberMe) {
           localStorage.setItem('rememberedEmail', email);
@@ -101,10 +91,10 @@ const Login: React.FC = () => {
           localStorage.removeItem('rememberMe');
         }
         
-        setSuccessMessage('Login successful! Redirecting to the dashboard...');
+        setSuccessMessage('Login successful! Redirecting to home page...');
         
         setTimeout(() => {
-          router.push('/profile');
+          router.push('/');  // Redirection to the home page
         }, 1500);
       } else {
         if (data.msg) {

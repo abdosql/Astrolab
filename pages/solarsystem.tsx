@@ -1,27 +1,15 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import Header from '../src/components/Header';
 import '../src/app/SolarSystem.css';
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import Loading from '@/components/Loading'
-import Image from 'next/image'
-import Link from 'next/link'
 
 const NEOViewer = dynamic(() => import('@/components/NEOViewer'), {
   ssr: false
 })
 
 const SolarSystem: React.FC = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.push('/login');
-    }
-  }, [router]);
-
   const headerStyles: React.CSSProperties = {
     position: 'fixed',
     top: 0,

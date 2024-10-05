@@ -20,7 +20,7 @@ const ArticleDetail: React.FC = () => {
   return (
     <>
       <Header 
-        backgroundImage="/images/header4.jpg"
+        logoImageName="astrolab white png.png"
         showText={true}
         showHeaderWave={true}
       />

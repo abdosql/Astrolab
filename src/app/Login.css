@@ -1,5 +1,56 @@
 /* src/Login.css */
 
+/* Your existing custom font declarations and styles */
+@font-face {
+  font-family: 'Garet';
+  src: url('/fonts/Garet-Book.woff2') format('woff2'),
+       url('/fonts/Garet-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Garet';
+  src: url('/fonts/Garet-Heavy.woff2') format('woff2'),
+       url('/fonts/Garet-Heavy.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Bold.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Italic.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-BoldItalic.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap');
 
 body, html {
@@ -44,7 +95,7 @@ body, html {
 .login-title {
   text-align: center;
   color: #C1E2A4; /* Couleur des titres ajustée */
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Neue Montreal', 'Orbitron', sans-serif;
   font-size: 2em;
   margin-bottom: 30px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);

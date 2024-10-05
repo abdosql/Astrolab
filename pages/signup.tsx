@@ -32,7 +32,7 @@ const SignUp: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Réinitialiser toutes les erreurs
+    // Reset all errors
     setFullNameError(null);
     setEmailError(null);
     setPasswordError(null);
@@ -44,7 +44,7 @@ const SignUp: React.FC = () => {
 
     let isValid = true;
 
-    // Valider tous les champs
+    // Validate all fields
     if (fullName.trim() === '') {
       setFullNameError('Full name is required.');
       isValid = false;
@@ -91,6 +91,7 @@ const SignUp: React.FC = () => {
     } catch (err: unknown) {
       if (err instanceof Error) {
         // Handle the error
+        setServerError('An error occurred while creating the account. Please try again.');
       }
     } finally {
       setIsLoading(false);
@@ -104,7 +105,7 @@ const SignUp: React.FC = () => {
           <div className="logo-container">
             <Image src={NASALogo} alt="NASA Logo" className="nasa-logo" width={80} height={80} />
           </div>
-          <h2 className="signup-title">Créer un compte</h2>
+          <h2 className="signup-title">Create an Account</h2>
           
           {serverError && <div className="error-message">{serverError}</div>}
           
@@ -165,15 +166,15 @@ const SignUp: React.FC = () => {
               onChange={(e) => setAcceptTerms(e.target.checked)}
             />
             <label htmlFor="acceptTerms" className="checkbox-label">
-              I accept the conditions
+              I accept the terms and conditions
             </label>
             {acceptTermsError && <span className="field-error">{acceptTermsError}</span>}
           </div>
           <button type="submit" className="submit-button" disabled={isLoading}>
-            {isLoading ? <Loader /> : 'S\'inscrire'}
+            {isLoading ? <Loader /> : 'Sign Up'}
           </button>
           <div className="footer-links">
-            <Link href="/login" className="footer-link">Déjà un compte ? Se connecter</Link>
+            <Link href="/login" className="footer-link">Already have an account? Log in</Link>
           </div>
         </form>
       </div>

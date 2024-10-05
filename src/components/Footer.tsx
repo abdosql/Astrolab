@@ -65,13 +65,13 @@ const Footer: React.FC = () => {
       </div>
       <div className="social-media">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <Image src="/images/facebook.svg" alt="Facebook" width={32} height={32} />
+          <Image src="/images/linkedin.svg" alt="Facebook" width={32} height={32} />
         </a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
           <Image src="/images/twitter.svg" alt="Twitter" width={32} height={32} />
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <Image src="/images/instagram.svg" alt="Instagram" width={32} height={32} />
+          <Image src="/images/insta.svg" alt="Instagram" width={32} height={32} />
         </a>
         <a href="https://github.com" target="_blank" rel="noopener noreferrer">
           <Image src="/images/github.svg" alt="GitHub" width={32} height={32} />

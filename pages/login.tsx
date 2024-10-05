@@ -47,21 +47,21 @@ const Login: React.FC = () => {
     setPasswordError(null);
 
     if (!email) {
-      setEmailError('Veuillez entrer votre email.');
+      setEmailError('Please enter your email.');
       valid = false;
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        setEmailError('Veuillez entrer une adresse email valide.');
+        setEmailError('Please enter a valid email address.');
         valid = false;
       }
     }
 
     if (!password) {
-      setPasswordError('Veuillez entrer votre mot de passe.');
+      setPasswordError('Please enter your password.');
       valid = false;
     } else if (password.length < 6) {
-      setPasswordError('Le mot de passe doit contenir au moins 6 caractères.');
+      setPasswordError('Password must be at least 6 characters long.');
       valid = false;
     }
 
@@ -101,7 +101,7 @@ const Login: React.FC = () => {
           localStorage.removeItem('rememberMe');
         }
         
-        setSuccessMessage('Connexion réussie ! Redirection vers le tableau de bord...');
+        setSuccessMessage('Login successful! Redirecting to the dashboard...');
         
         setTimeout(() => {
           router.push('/profile');
@@ -110,11 +110,11 @@ const Login: React.FC = () => {
         if (data.msg) {
           setServerErrorMessage(data.msg);
         } else {
-          setServerErrorMessage('Une erreur inconnue s\'est produite lors de la connexion.');
+          setServerErrorMessage('An unknown error occurred during login.');
         }
       }
     } catch {
-      setServerErrorMessage('Erreur serveur. Veuillez réessayer plus tard.');
+      setServerErrorMessage('Server error. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -137,7 +137,7 @@ const Login: React.FC = () => {
           <div className="logo-container">
             <Image src={NASALogo} alt="NASA Logo" className="nasa-logo" width={80} height={80} />
           </div>
-          <h2 className="login-title">Connexion à la Mission</h2>
+          <h2 className="login-title">Login to the Mission</h2>
           
           <div className="input-group">
             <label htmlFor="email" className="input-label">Email</label>
@@ -148,12 +148,12 @@ const Login: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="Entrez votre email"
+              placeholder="Enter your email"
             />
             {emailError && <span className="error-text">{emailError}</span>}
           </div>
           <div className="input-group">
-            <label htmlFor="password" className="input-label">Mot de passe</label>
+            <label htmlFor="password" className="input-label">Password</label>
             <input
               type="password"
               className={`input-field ${passwordError ? 'input-error' : ''}`}
@@ -161,7 +161,7 @@ const Login: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="Entrez votre mot de passe"
+              placeholder="Enter your password"
             />
             {passwordError && <span className="error-text">{passwordError}</span>}
           </div>
@@ -173,14 +173,13 @@ const Login: React.FC = () => {
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
             />
-            <label htmlFor="remember" className="checkbox-label">Se souvenir de moi</label>
+            <label htmlFor="remember" className="checkbox-label">Remember me</label>
           </div>
           <button type="submit" className="submit-button" disabled={loading}>
-            {loading ? <Loader /> : 'Lancer la Mission'}
+            {loading ? <Loader /> : 'Start the Mission'}
           </button>
           <div className="footer-links">
-            <a href="#" className="footer-link">Mot de passe oublié ?</a>
-            <Link href="/signup" className="footer-link">Créer un compte</Link>
+            <Link href="/signup" className="footer-link">Create an account</Link>
           </div>
         </form>
       </div>

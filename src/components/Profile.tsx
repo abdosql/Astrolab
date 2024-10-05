@@ -10,8 +10,8 @@ export default function Profile() {
       <div className="main-content">
         <div className="profile-header">
           <div className="profile-info">
-            <span className="username-label">UserName</span>
-            <span className="email-label">kadimeed@gmail.com</span>
+            <span className="username-label">Mo Kadi</span>
+            <span className="email-label">kadi@gmail.com</span>
           </div>
           <div className="settings-icon-container">
             <Image className="btn settings-btn" src="images/profile/settings.svg" alt="Settings" width={24} height={24} />
@@ -21,16 +21,20 @@ export default function Profile() {
         <div className="information-box">
           <h2 className="section-title">About</h2>
           <div className="divider-lines">
-            {[...Array(4)].map((_, index) => <span key={`about-${index}`}></span>)}
+            {['Passionate developer', 'AI enthusiast', 'Continuous learner', 'Innovative thinker'].map((text, index) => (
+              <span key={`about-${index}`}>{text}</span>
+            ))}
           </div>
-          <h2 className="section-title">Interest</h2>
+          <h2 className="section-title">Interests</h2>
           <div className="divider-lines">
-            {[...Array(4)].map((_, index) => <span key={`interest-${index}`}></span>)}
+            {['Artificial Intelligence', 'Web Development', 'Open Source', 'Data Science'].map((interest, index) => (
+              <span key={`interest-${index}`}>{interest}</span>
+            ))}
           </div>
         </div>
 
         <div className="social-icons">
-          {['twitter', 'insta', 'linked in', 'github'].map((platform) => (
+          {['twitter', 'insta', 'linkedin', 'github'].map((platform) => (
             <Image 
               key={platform}
               className="btn icon-small" 

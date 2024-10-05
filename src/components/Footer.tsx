@@ -9,7 +9,7 @@ interface FormData {
   message: string;
 }
 
-export default function Footer() {
+const Footer: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -82,4 +82,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

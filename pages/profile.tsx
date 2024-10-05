@@ -3,7 +3,7 @@ import Profile from '../src/components/Profile';
 import Header from '../src/components/Header';
 import '../src/app/globals.css';
 
-export default function ProfilePage() {
+const ProfilePage: React.FC = () => {
   return (
     <>
       <Header backgroundImage="/images/profile/profile circle.svg" logoImageName='profile/users/profile.jpeg' showText={false} />
@@ -12,4 +12,6 @@ export default function ProfilePage() {
       </main>
     </>
   );
-}
+};
+
+export default ProfilePage;

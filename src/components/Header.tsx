@@ -10,7 +10,7 @@ interface HeaderProps {
   showText?: boolean;
   style?: React.CSSProperties;
   className?: string;
-  showHeaderWave?: boolean; // New prop to control HeaderWave visibility
+  showHeaderWave?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   showText, 
   style, 
   className,
-  showHeaderWave = true // Default to true if not provided
+  showHeaderWave = true
 }) => {
   console.log('Header rendering:', { logoImageName, backgroundImage, showText, showHeaderWave });
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -51,12 +51,20 @@ const Header: React.FC<HeaderProps> = ({
         <ul className={`nav-links ${isMobile && isNavOpen ? 'nav-active' : ''}`}>
           <li><Link href="/">Home</Link></li>
           <li><Link href="/solarsystem">Solar System</Link></li>
-          <li><Link href="#missions">Missions</Link></li>
-          <li><Link href="#gallery">Gallery</Link></li>
-          <li><Link href="#contact">Contact</Link></li>
+          <li><Link href="/articles">Articles</Link></li>
           <li><Link href="/profile">Profile</Link></li>
           <li>
             <Link href="/solarsystemquiz">Solar System Quiz</Link>
+          </li>
+          <li className="profile-picture">
+            <Image 
+              src="/images/profile/users/kadi2.jpg" 
+              alt="Profile" 
+              width={40} 
+              height={40} 
+              className="circular-profile-pic"
+              style={{ borderRadius: '100%' }}  // Add this line
+            />
           </li>
         </ul>
         <div className="bookshelf-icon">

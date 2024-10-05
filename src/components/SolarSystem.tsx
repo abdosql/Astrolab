@@ -25,6 +25,7 @@ interface NEOData {
 interface SolarSystemProps {
   speed: number;
   onPlanetFocus: (planetName: string) => void;
+  isFloating: boolean;
 }
 
 // Gravitational constant * Sun's mass (in AU^3/day^2)
@@ -343,4 +344,4 @@ export default function SolarSystem({ onPlanetFocus }: SolarSystemProps) {
       </Html>
     </group>
   )
-}
+} 

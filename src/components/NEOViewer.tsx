@@ -105,6 +105,8 @@ export default function NEOViewer() {
   const [focusedPlanet, setFocusedPlanet] = useState<string | null>(null);
   const [bloomIntensity, setBloomIntensity] = useState(1.5);
   const [bloomThreshold, setBloomThreshold] = useState(0.1);
+  const [lightIntensity, setLightIntensity] = useState(1);
+  const cameraRef = useRef<PerspectiveCamera | null>(null);
 
   const handlePlanetFocus = useCallback((planetName: string) => {
     setFocusedPlanet(planetName);
@@ -114,16 +116,20 @@ export default function NEOViewer() {
     setFocusedPlanet(null);
   }, []);
 
-  const handleZoomIn = useCallback(() => {
-    // Implement zoom in logic
-  }, []);
+  const handleZoomIn = () => {
+    if (cameraRef.current) {
+      cameraRef.current.position.z -= 1;
+    }
+  };
 
-  const handleZoomOut = useCallback(() => {
-    // Implement zoom out logic
-  }, []);
+  const handleZoomOut = () => {
+    if (cameraRef.current) {
+      cameraRef.current.position.z += 1;
+    }
+  };
 
   const handleToggleLight = useCallback(() => {
-    // Implement light toggle logic
+    setLightIntensity((prevIntensity) => (prevIntensity === 1 ? 0.5 : 1));
   }, []);
 
   const handleToggleFullscreen = useCallback(() => {
@@ -134,15 +140,30 @@ export default function NEOViewer() {
     }
   }, []);
 
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  useEffect(() => {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    setWebGLSupported(!!gl);
+  }, []);
+
+  if (!webGLSupported) {
+    return <div>Your browser does not support WebGL, which is required for this application.</div>;
+  }
+
   return (
     <div className="relative w-full h-full">
       <Canvas camera={{ position: [0, 1000, 2000], fov: 90 }}>
         <MilkyWaySkybox />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[100, 100, 100]} intensity={1} />
-        <pointLight position={[0, 0, 0]} intensity={1} />
+        <ambientLight intensity={lightIntensity * 0.5} />
+        <directionalLight position={[100, 100, 100]} intensity={lightIntensity} />
+        <pointLight position={[0, 0, 0]} intensity={lightIntensity} />
         <CameraController focusedPlanet={focusedPlanet} onFocusReset={handleFocusReset} />
-        <SolarSystem speed={speed} onPlanetFocus={handlePlanetFocus} />
+        <SolarSystem
+          speed={speed}
+          onPlanetFocus={handlePlanetFocus}
+        />
         <PostProcessing bloomIntensity={bloomIntensity} bloomThreshold={bloomThreshold} />
       </Canvas>
       <FocusButton onClick={handleFocusReset} isVisible={!!focusedPlanet} />
@@ -152,7 +173,6 @@ export default function NEOViewer() {
         onToggleLight={handleToggleLight}
         onToggleFullscreen={handleToggleFullscreen}
       />
-      <SpeedControl speed={speed} setSpeed={setSpeed} />
     </div>
   )
 }

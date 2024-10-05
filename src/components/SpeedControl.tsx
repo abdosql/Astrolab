@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface SpeedControlProps {
-  currentDate: Date | undefined;
+  currentDate: Date;
   onDateChange: (newDate: Date) => void;
 }
 
@@ -20,36 +20,46 @@ const timeIncrements = [
 
 export default function SpeedControl({ currentDate, onDateChange }: SpeedControlProps) {
   const [selectedIncrement, setSelectedIncrement] = useState(0);
+  const [internalDate, setInternalDate] = useState(currentDate || new Date());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const newDate = new Date(currentDate ? currentDate.getTime() : Date.now());
+      const newDate = new Date(internalDate.getTime());
       newDate.setDate(newDate.getDate() + timeIncrements[selectedIncrement].value);
-      onDateChange(newDate);
+      setInternalDate(newDate);
+      if (typeof onDateChange === 'function') {
+        onDateChange(newDate);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [selectedIncrement, currentDate, onDateChange]);
+  }, [selectedIncrement, internalDate, onDateChange]);
+
+  useEffect(() => {
+    if (currentDate) {
+      setInternalDate(currentDate);
+    }
+  }, [currentDate]);
 
   const handleIncrementChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedIncrement(Number(e.target.value));
   };
 
-  const formatDate = (date: Date | undefined) => {
-    return date ? date.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }) : 'Loading...';
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
   };
 
-  const formatTime = (date: Date | undefined) => {
-    return date ? date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }) : 'Loading...';
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
   };
 
   const currentSize = 32 + (64 - 32) * (selectedIncrement / (timeIncrements.length - 1));
 
   return (
-    <div className="bg-black bg-opacity-50 p-3 rounded-lg">
+    <div className="bg-black bg-opacity-50 p-4 rounded-lg w-full">
       <div className="flex items-center justify-between mb-2">
-        <div className="text-white text-sm">{formatDate(currentDate)}</div>
-        <div className="text-white text-sm">{formatTime(currentDate)}</div>
+        <div className="text-white text-sm">{formatDate(internalDate)}</div>
+        <div className="text-white text-sm">{formatTime(internalDate)}</div>
       </div>
       <div className="w-64 relative h-16">
         <input

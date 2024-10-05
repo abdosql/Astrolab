@@ -1,14 +1,15 @@
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { useSpring } from '@react-spring/three'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import SolarSystem from './SolarSystem'
 import ViewerMenu from './ViewerMenu'
 import FocusButton from './FocusButton'
 import SpeedControl from './SpeedControl'
+import SimulationModal from './SimulationModal'
 import * as THREE from 'three'
-import { useState, useCallback, useRef, useEffect } from 'react'
 import { PostProcessing } from './PostProcessing'
+import Image from 'next/image'
 
 function MilkyWaySkybox() {
   const texture = new THREE.TextureLoader().load('/8k_stars_milky_way.jpg')
@@ -152,6 +153,22 @@ export default function NEOViewer() {
     return <div>Your browser does not support WebGL, which is required for this application.</div>;
   }
 
+  const [isSimulationModalOpen, setIsSimulationModalOpen] = useState(false);
+
+  const handleSimulateChange = () => {
+    setIsSimulationModalOpen(true);
+  };
+
+  const handleCloseSimulationModal = () => {
+    setIsSimulationModalOpen(false);
+  };
+
+  const handleApplyChanges = (changes: SimulationChanges) => {
+    console.log('Applying changes:', changes);
+    // Here you would update the Saturn model with these changes
+    // This might involve updating the SolarSystem component or the Saturn model directly
+  };
+
   return (
     <div className="relative w-full h-full">
       <Canvas camera={{ position: [0, 1000, 2000], fov: 90 }}>
@@ -172,6 +189,32 @@ export default function NEOViewer() {
         onZoomOut={handleZoomOut}
         onToggleLight={handleToggleLight}
         onToggleFullscreen={handleToggleFullscreen}
+      />
+      
+      {/* Updated fixed button */}
+      <div className="absolute bottom-4 left-4 z-10">
+        <button
+          className="focus:outline-none focus:ring-2 focus:ring-white"
+          onClick={handleSimulateChange}
+        >
+          <div className="relative w-[216px] h-[72px]">
+            <Image
+              src="/button_empty.svg"
+              alt="Simulate Change Button"
+              layout="fill"
+              objectFit="contain"
+            />
+            <span className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm">
+              Simulate Change
+            </span>
+          </div>
+        </button>
+      </div>
+
+      <SimulationModal 
+        isOpen={isSimulationModalOpen}
+        onClose={handleCloseSimulationModal}
+        onApplyChanges={handleApplyChanges}
       />
     </div>
   )

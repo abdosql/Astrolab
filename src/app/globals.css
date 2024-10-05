@@ -212,7 +212,7 @@ nav {
 .image-container {
   width: 90%;
   height: 90%;
-  padding: 5%;
+  padding: 1%;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -1042,3 +1042,9 @@ main {
 .right-4 { right: 1rem; }
 
 /* Add any other utility classes you need */
+
+/* Ajoutez ceci à la fin du fichier */
+.articles-main {
+  min-height: calc(100vh - 80px); /* Ajustez 80px selon la hauteur de votre header */
+  background-color: #0F0F0F;
+}

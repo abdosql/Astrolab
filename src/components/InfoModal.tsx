@@ -6,37 +6,44 @@ interface InfoModalProps {
   onClose: () => void;
 }
 
-export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
+const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="relative">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" style={{ zIndex: 1000 }}>
+      <div className="relative w-[409px] h-[500px]">
         <Image
           src="/panel_1.svg"
           alt="Info Panel Background"
-          width={509}
-          height={718}
+          layout="fill"
+          objectFit="contain"
         />
-        <div className="absolute inset-0 p-8 overflow-auto">
-          <h2 className="text-2xl font-bold mb-4">Solar System Information</h2>
-          <p className="mb-4">
-            This interactive viewer allows you to explore the solar system and near-Earth objects (NEOs).
-          </p>
-          <p className="mb-4">
-            Use the controls on the right to zoom in/out, toggle layers, and enter fullscreen mode.
-          </p>
-          <p className="mb-4">
-            Click on planets to focus on them and see more details.
-          </p>
-          <button
-            className="absolute top-4 right-4 text-white hover:text-gray-300"
-            onClick={onClose}
-          >
-            Close
-          </button>
+        <div className="absolute inset-0 p-8 flex flex-col">
+          <div className="flex items-center mb-2">
+            <button
+              className="text-white hover:text-gray-300 mr-2"
+              onClick={onClose}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="text-3xl font-bold text-white flex-grow text-center">Info</h2>
+          </div>
+          <div className="w-full h-px bg-white mt-1 mb-4"></div>
+          <div className="flex-grow flex flex-col items-center justify-center overflow-y-auto">
+            <h3 className="text-xl font-bold text-white text-center mb-2">Info Content</h3>
+            <p className="text-white text-center text-sm px-2">
+              This is where you can add your detailed information about the solar system, 
+              planets, or any other relevant content. You can include multiple paragraphs 
+              or even add more complex content structure here.
+            </p>
+          </div>
+          <div className="w-full h-px bg-white mt-4 mb-1"></div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default InfoModal;

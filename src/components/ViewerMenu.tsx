@@ -24,24 +24,24 @@ export default function ViewerMenu({ onZoomIn, onZoomOut, onToggleLight, onToggl
             height={300}
             className={`transition-all duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}
           />
-          <div className={`absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-around items-center ${isExpanded ? '' : 'pointer-events-none'}`}>
+          <div className={`absolute inset-0 flex flex-col justify-around items-center ${isExpanded ? '' : 'pointer-events-none'}`}>
             {isExpanded && (
               <>
-                <button className="text-white p-2" onClick={() => setShowInfoModal(true)} title="Show info panel">
+                <button className="text-white p-2 hover:bg-gray-700 rounded-full" onClick={() => setShowInfoModal(true)} title="Show info panel">
                   <Image src="/info.svg" alt="Info" width={24} height={24} />
                 </button>
-                <button className="text-white p-2" onClick={onToggleLight} title="Toggle layers">
+                <button className="text-white p-2 hover:bg-gray-700 rounded-full" onClick={onToggleLight} title="Toggle layers">
                   <Image src="/layers.svg" alt="Layers" width={24} height={24} />
                 </button>
-                <div className="flex flex-col items-center">
-                  <button className="text-white p-2" onClick={onZoomIn} title="Zoom in">
+                <div className="flex flex-col items-center space-y-2">
+                  <button className="text-white p-2 hover:bg-gray-700 rounded-full" onClick={onZoomIn} title="Zoom in">
                     <Image src="/plus.svg" alt="Zoom in" width={24} height={24} />
                   </button>
-                  <button className="text-white p-2" onClick={onZoomOut} title="Zoom out">
+                  <button className="text-white p-2 hover:bg-gray-700 rounded-full" onClick={onZoomOut} title="Zoom out">
                     <Image src="/minus.svg" alt="Zoom out" width={24} height={24} />
                   </button>
                 </div>
-                <button className="text-white p-2" onClick={onToggleFullscreen} title="Toggle fullscreen">
+                <button className="text-white p-2 hover:bg-gray-700 rounded-full" onClick={onToggleFullscreen} title="Toggle fullscreen">
                   <Image src="/full screen .svg" alt="Fullscreen" width={24} height={24} />
                 </button>
               </>
@@ -49,7 +49,7 @@ export default function ViewerMenu({ onZoomIn, onZoomOut, onToggleLight, onToggl
           </div>
         </div>
         <button 
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-full bg-black bg-opacity-50 text-white p-2 rounded-l-md"
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-full bg-black bg-opacity-50 text-white p-2 rounded-l-md hover:bg-opacity-75"
           onClick={() => setIsExpanded(!isExpanded)} 
           title={isExpanded ? "Hide menu" : "Show menu"}
         >
@@ -58,7 +58,7 @@ export default function ViewerMenu({ onZoomIn, onZoomOut, onToggleLight, onToggl
             alt={isExpanded ? "Collapse" : "Expand"} 
             width={24} 
             height={24} 
-            style={{ transform: isExpanded ? 'rotate(0deg)' : 'rotate(180deg)' }}
+            className={`transform ${isExpanded ? 'rotate-0' : 'rotate-180'} transition-transform duration-300`}
           />
         </button>
       </div>

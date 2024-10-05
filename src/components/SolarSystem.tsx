@@ -7,6 +7,7 @@ import NEOObject from './NEOObject'
 import NEOOrbit from './NEOOrbit'
 import { calculateOrbitalPosition, calculateOrbitPoints, OrbitalElements } from '../utils/orbitalMechanics'
 import SpeedControl from './SpeedControl'
+import ViewerMenu from './ViewerMenu'
 import { Html } from '@react-three/drei'
 
 interface NEOData {
@@ -219,6 +220,22 @@ export default function SolarSystem({ onPlanetFocus }: SolarSystemProps) {
     setCurrentDate(newDate)
   }, [])
 
+  const handleZoomIn = () => {
+    // Implement zoom in logic
+  }
+
+  const handleZoomOut = () => {
+    // Implement zoom out logic
+  }
+
+  const handleToggleLight = () => {
+    // Implement toggle light logic
+  }
+
+  const handleToggleFullscreen = () => {
+    // Implement fullscreen toggle logic
+  }
+
   useEffect(() => {
     fetch('/cleaned_data.csv')
       .then(response => {
@@ -338,10 +355,30 @@ export default function SolarSystem({ onPlanetFocus }: SolarSystemProps) {
       })}
 
       <Html fullscreen>
-        <div style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)' }}>
+        <div style={{
+          position: 'absolute',
+          bottom: '1rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1000,
+        }}>
           <SpeedControl currentDate={currentDate} onDateChange={handleDateChange} />
+        </div>
+        <div style={{
+          position: 'absolute',
+          right: '1rem',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 1000,
+        }}>
+          <ViewerMenu
+            onZoomIn={handleZoomIn}
+            onZoomOut={handleZoomOut}
+            onToggleLight={handleToggleLight}
+            onToggleFullscreen={handleToggleFullscreen}
+          />
         </div>
       </Html>
     </group>
   )
-} 
+}

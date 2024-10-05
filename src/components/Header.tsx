@@ -55,6 +55,9 @@ const Header: React.FC<HeaderProps> = ({
           <li><Link href="#gallery">Gallery</Link></li>
           <li><Link href="#contact">Contact</Link></li>
           <li><Link href="/profile">Profile</Link></li>
+          <li>
+            <Link href="/solarsystemquiz">Solar System Quiz</Link>
+          </li>
         </ul>
         <div className="bookshelf-icon">
           <i className="fas fa-book-open"></i>

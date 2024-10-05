@@ -23,7 +23,7 @@ interface CameraControllerProps {
 
 function CameraController({ focusedPlanet, onFocusReset }: CameraControllerProps) {
   const { camera, scene } = useThree();
-  const controlsRef = useRef<OrbitControls>(null);
+  const controlsRef = useRef<typeof OrbitControls>(null);
 
   const [spring, api] = useSpring(() => ({
     position: [0, 1000, 2000],

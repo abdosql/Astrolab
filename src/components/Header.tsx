@@ -53,6 +53,7 @@ const Header: React.FC<HeaderProps> = ({
           <li><Link href="/solarsystem">Solar System</Link></li>
           <li><Link href="/articles">Articles</Link></li>
           <li><Link href="/profile">Profile</Link></li>
+          <li><Link href="/join-call">Join call</Link></li>
           <li>
             <Link href="/solarsystemquiz">Solar System Quiz</Link>
           </li>

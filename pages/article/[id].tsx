@@ -30,9 +30,9 @@ const ArticleDetail: React.FC = () => {
           <Image src={article.image} alt={article.title} layout="fill" objectFit="cover" />
         </div>
         <div className="article-detail-content">
-          <h2>Résumé</h2>
+          <h2>Summary</h2>
           <p>{article.content}</p>
-          <h2>Détails du projet</h2>
+          <h2>Project Details</h2>
           <p>{article.details}</p>
         </div>
       </main>

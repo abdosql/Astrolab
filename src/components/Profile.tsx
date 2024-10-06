@@ -34,15 +34,21 @@ export default function Profile() {
         </div>
 
         <div className="social-icons">
-          {['twitter', 'insta', 'linkedin', 'github'].map((platform) => (
-            <Image 
-              key={platform}
-              className="btn icon-small" 
-              src={`images/profile/${platform}.svg`} 
-              alt={platform} 
-              width={24} 
-              height={24} 
-            />
+          {[
+            { platform: 'twitter', url: 'https://twitter.com/mokadi' },
+            { platform: 'insta', url: 'https://instagram.com/mokadi' },
+            { platform: 'linkedin', url: 'https://linkedin.com/in/mokadi' },
+            { platform: 'github', url: 'https://github.com/vrspi/NASA-AI-powered-simulation-scenarios.git' }
+          ].map(({ platform, url }) => (
+            <a href={url} target="_blank" rel="noopener noreferrer" key={platform}>
+              <Image 
+                className="btn icon-medium" 
+                src={`images/profile/${platform}.svg`} 
+                alt={platform} 
+                width={30} 
+                height={30} 
+              />
+            </a>
           ))}
         </div>
       </div>
